@@ -18,10 +18,11 @@ def ReadFemPreg(dct_file='2002FemPreg.dct',
                 dat_file='2002FemPreg.dat.gz'):
     """Reads the NSFG pregnancy data.
 
-    dct_file: string file name
+    dct_file: string file name,
+        dct_file is the dat file's diction, its a meta doc describe the dat file
     dat_file: string file name
 
-    returns: DataFrame
+    returns: pandas DataFrame
     """
     dct = thinkstats2.ReadStataDct(dct_file)
     df = dct.ReadFixedWidth(dat_file, compression='gzip')
@@ -31,10 +32,12 @@ def ReadFemPreg(dct_file='2002FemPreg.dct',
 
 def CleanFemPreg(df):
     """Recodes variables from the pregnancy frame.
+    and do some data cleaning job
 
     df: DataFrame
     """
     # mother's age is encoded in centiyears; convert to years
+    # syntax: df.[column_name], returns a pandas Series instance
     df.agepreg /= 100.0
 
     # birthwgt_lb contains at least one bogus value (51 lbs)
@@ -69,7 +72,7 @@ def MakePregMap(df):
     returns: dict that maps from caseid to list of indices into preg df
     """
     d = defaultdict(list)
-    for index, caseid in df.caseid.iteritems():
+    for index, caseid in df.caseid.iteritems():# index:pandas Dataframe index 
         d[caseid].append(index)
     return d
 

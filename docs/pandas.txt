@@ -1,0 +1,11 @@
+# links
+* [10 mins intro](http://pandas.pydata.org/pandas-docs/stable/10min.html)
+
+
+# datatypes:
+  * Series: list with index
+  * Dataframe: it's like a relation db's table, with x, y label, and also build-in 
+    lots of handy & powerful query utilities.
+    * each column return by df.<column_name> is a pandas Series instance.
+ 
+
